@@ -1,0 +1,206 @@
+/* --- Reset și Global --- */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* --- Layout Principal (App) --- */
+.app-container {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #059669; /* Culoare */
+}
+
+.app-title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  color: #ffffff; /* Culoare */
+  letter-spacing: 0.05em;
+}
+
+.game-layout {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* Culoare */
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  max-width: 64rem;
+  width: 100%;
+}
+
+.game-board-container {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.game-info-container {
+  width: 100%;
+  padding: 1rem;
+  background-color: #f9fafb; /* Culoare */
+  border-radius: 0.75rem;
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+/* --- Componenta Board și Status --- */
+.status-container {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  min-height: 4.5rem; 
+  align-items: center;
+}
+
+.status-draw {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937; /* Culoare */
+  padding: 0.5rem;
+  background-color: #fef3c7; /* Culoare */
+  border-radius: 0.375rem;
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  /* 'animation' a fost eliminată de aici */
+}
+
+.status-winner {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #15803d; /* Culoare */
+  padding: 0.75rem;
+  background-color: #dcfce7; /* Culoare */
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* 'animation' a fost eliminată de aici */
+}
+
+.status-next {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151; /* Culoare */
+}
+
+.board-row {
+  display: flex;
+  justify-content: center;
+}
+
+/* --- Componenta Square --- */
+.square {
+  width: 5rem;
+  height: 5rem;
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.125rem;
+  border-radius: 0.5rem;
+  transition: all 200ms ease-out;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: none;
+  background-color: #ffffff; /* Culoare */
+  color: #1f2937; /* Culoare */
+  cursor: pointer;
+}
+
+.square:not(:disabled):hover {
+  background-color: #f3f4f6; /* Culoare */
+  transform: scale(1.03);
+}
+
+.square.winner {
+  background-color: #fcd34d; /* Culoare */
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transition: all 500ms ease-in-out;
+}
+
+.square.occupied:not(.winner) {
+  background-color: #e5e7eb; /* Culoare */
+  cursor: default;
+  opacity: 0.8;
+}
+
+/* --- Istoric Mutări (Game Info) --- */
+.history-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #065f46; /* Culoare */
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 20rem;
+  overflow-y: auto;
+}
+
+.history-item {
+  margin-bottom: 0.5rem;
+}
+
+.history-button {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: background-color 200ms, color 200ms;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  background-color: #d1fae5; /* Culoare */
+  color: #064e3b; /* Culoare */
+}
+
+.history-button:hover:not(.current) {
+  background-color: #a7f3d0; /* Culoare */
+}
+
+.history-button.current {
+  background-color: #059669; /* Culoare */
+  color: #ffffff; /* Culoare */
+  font-weight: 700;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+
+
+/* --- Media Queries (Responsive) --- */
+@media (min-width: 768px) {
+  .game-layout {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game-layout {
+    flex-direction: row;
+  }
+  .game-board-container {
+    margin-right: 2rem;
+    margin-bottom: 0;
+  }
+  .game-info-container {
+    width: 16rem;
+    flex-shrink: 0;
+  }
+}
