@@ -62,7 +62,7 @@ function Board({ xIsNext, squares, onPlay }) {
     onPlay(nextSquares);
   }, [xIsNext, squares, winner, onPlay]);
 
-  // Hook-ul useEffect va rula de fiecare dată când 'winner' se schimbă
+  //  useEffect va rula de fiecare dată când 'winner' se schimbă
   useEffect(() => {
     // Verificăm dacă elementul de status există
     if (!statusRef.current) {
@@ -99,7 +99,6 @@ function Board({ xIsNext, squares, onPlay }) {
       );
     }
     
-    // Acest efect depinde de starea 'winner'
   }, [winner]);
 
 
@@ -127,7 +126,7 @@ function Board({ xIsNext, squares, onPlay }) {
     );
   }, [winner, xIsNext]);
 
-  // Generează tabla de joc (neschimbat)
+  // Generează tabla de joc 
   const renderBoard = () => {
     let board = [];
     for (let i = 0; i < 9; i += 3) {
@@ -162,7 +161,7 @@ function Board({ xIsNext, squares, onPlay }) {
   );
 }
 
-// Componenta principală Game (neschimbată)
+// Componenta principală Game 
 export default function App() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
